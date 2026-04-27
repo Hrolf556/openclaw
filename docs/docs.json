@@ -1121,13 +1121,15 @@
                   "concepts/oauth",
                   "start/bootstrapping",
                   "concepts/experimental-features",
-                  "concepts/qa-e2e-automation"
+                  "concepts/qa-e2e-automation",
+                  "concepts/qa-matrix"
                 ]
               },
               {
                 "group": "Sessions and memory",
                 "pages": [
                   "concepts/session",
+                  "concepts/channel-docking",
                   "concepts/session-pruning",
                   "concepts/session-tool",
                   {
