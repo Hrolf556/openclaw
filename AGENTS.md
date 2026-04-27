@@ -187,3 +187,13 @@ Telegraph style. Root rules only. Read scoped `AGENTS.md` before subtree work.
 - Connection/provider additions: update all UI surfaces + docs + status/config forms.
 - Provider tool schemas: prefer flat string enum helpers over `Type.Union([Type.Literal(...)])`; some providers reject `anyOf`. Not a repo-wide protocol/schema ban.
 - External messaging: no token-delta channel messages. Follow `docs/concepts/streaming.md`; preview/block streaming uses edits/chunks and preserves final/fallback delivery.
+
+
+## Output Format (synced from ~/.claude/CLAUDE.md global)
+- **One command per code block. NEVER mix `# comments` or step numbers with commands inside the same fenced block.** Rusty copies each fenced block as one unit and pastes it into a terminal — inline comments and `# 1.` headers break that flow because they get pasted alongside the command. When delivering multiple sequential commands, put each in its own fenced code block, with prose context (where to run, what happens, what to verify) BETWEEN the blocks, never inside them.
+
+
+## Execution preferences (synced from ~/.claude/CLAUDE.md global)
+- **MAXIMIZE PARALLELISM. Always dispatch parallel sub-agents whenever possible.** Default to concurrent execution for independent tasks. Sequential is the exception, not the default. Speed matters.
+- **When I can act directly, do it.** If I have shell, MCP, or tool access to perform a task myself, do it instead of scaffolding a workflow for Rusty to operate.
+- **Every `.sh` script I deliver gets a paired tmux 3-pane launcher** (left pane: script; top right: `tail -F` log dir; bottom right: `git log -15` + `git status -sb` on 5s refresh). Pattern reference: `reference/run-batch-1-tmux-monitor.sh` in rustycole-v4.
